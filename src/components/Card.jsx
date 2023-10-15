@@ -1,17 +1,28 @@
-import React from 'react'
+import React, { useState } from 'react'
 
-function Card({image,location,description,price}) {
-  return (
-    <div>
+function Card({ id, image, location, price, description, removeTour }) {
+
+    const [readmore, setReadmore] = useState(false)
+
+    const info = readmore ? description : `${description.substring(0, 250)}....`
+
+    const readmoreHandler = () => {
+        setReadmore(!readmore)
+    }
+
+    return (
         <div>
-        <img src={image} alt="" />
-        <h3>{price}</h3>
-        <h4>{location}</h4>
-        <p>{description}</p>
+            <div>
+                <img src={image} alt="" />
+                <h4>{price}</h4>
+                <h3>{location}</h3>
+                <p>{info}
+                    <span onClick={readmoreHandler}>{readmore ? 'show less' : 'read more'}</span>
+                </p>
+            </div>
+            <button onClick={() => removeTour(id)}>Not Intrested</button>
         </div>
-        <button>Not Interested</button>
-    </div>
-  )
+    )
 }
 
 export default Card
