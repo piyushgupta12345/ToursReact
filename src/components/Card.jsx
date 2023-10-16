@@ -11,16 +11,16 @@ function Card({ id, image, location, price, description, removeTour }) {
     }
 
     return (
-        <div>
+        <div className='w-[350px] p-4 flex flex-col shadow-2xl rounded-lg'>
             <div>
-                <img src={image} alt="" />
+                <img className=' rounded-md' src={image} alt="" />
                 <h4>{price}</h4>
                 <h3>{location}</h3>
                 <p>{info}
                     <span onClick={readmoreHandler}>{readmore ? 'show less' : 'read more'}</span>
                 </p>
             </div>
-            <button onClick={() => removeTour(id)}>Not Intrested</button>
+            <button className='text-xl  font-bold  py-2 px-16 bg-red-100 border-2 border-solid rounded-lg border-red-500 hover:bg-red-600 hover:text-white' onClick={() => removeTour(id)}>Not Interested</button>
         </div>
     )
 }
